@@ -1,0 +1,27 @@
+<ul class="nav nav-pills nav-fill" >
+
+    <li class="nav-item" (click)="onSelected()">
+      <span style="width: 70px; cursor: pointer;" class="badge badge-pill badge-secondary">{{symbol.title}}</span>
+    </li>
+    <li class="nav-item">
+        <span style="width: 70px" class="badge badge-pill badge-info">{{symbol.preClosePrice}}</span>
+
+      </li>
+    <li class="nav-item">
+      <span style="width: 70px" class="badge badge-pill badge-info">{{symbol.currPrice}}</span>
+
+    </li>
+    <li class="nav-item">
+      <span *ngIf="symbol.change > 0" style="width: 70px" class="badge badge-pill badge-success">{{symbol.change}}</span>
+      <span *ngIf="symbol.change < 0" style="width: 70px" class="badge badge-pill badge-danger">{{symbol.change}}</span>
+
+    </li>
+    <!-- <li class="nav-item" (click)="onUpdateData(symbol.title)">
+        <span  style="width: 70px" class="badge badge-pill badge-success">Update Data</span>
+
+      </li> -->
+
+
+</ul>
+
+

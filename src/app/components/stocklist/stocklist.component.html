@@ -1,0 +1,48 @@
+<section fxLayout="column" fxFlexAlign="stretch">
+  <div fxFlexAlign="center" class="flex-wrapper">
+    <div class="example-container">
+      <mat-form-field #name [formGroup]="form">
+        <input matInput #symbol formControlName="symbol" required>
+        <mat-placeholder class="placeholder"> insert symbole</mat-placeholder>
+        <p style="color:red;" *ngIf="form.get('symbol').hasError('pattern')"> need valid symbol </p>
+        <p style="color:red;" *ngIf="form.get('symbol').hasError('required') && form.get('symbol').touched">title is
+          required
+        </p>
+        <p style="color:red;" *ngIf="form.get('symbol').hasError('minlength') && form.get('symbol').touched"> min 3
+          letters
+        </p>
+      </mat-form-field>
+      <button mat-raised-button color="accent" (click)="register()" [disabled]="form.invalid">Add Symbol</button>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="list-group" style="margin-top: 10px;">
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <button mat-raised-button color="primary" (click)="sortAbc()">
+          Sort By ABC
+        </button>
+      </li>
+      <li class="nav-item">
+        <button mat-raised-button color="primary" (click)="sort()">
+          Sort By Change
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="list-group">
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">Stock Symbol</li>
+      <li class="nav-item">Close Price</li>
+      <li class="nav-item">Current Price</li>
+      <li class="nav-item">Change Price</li>
+    </ul>
+    <hr style="width: 90%;">
+    <app-stock-item *ngFor="let symbol of symbols" [symbol]="symbol" [isNegative]="isNegative"
+      (symbolSelected)="onStockSymbolSelected($event)">
+    </app-stock-item>
+  </div>
+</section>
